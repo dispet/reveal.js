@@ -1,40 +1,303 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+    <title>lodash- presentation for rolling-scopes-school</title>
 
-		<link rel="stylesheet" href="dist/reset.css">
-		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css" id="theme">
+    <link rel="stylesheet" href="dist/reset.css">
+    <link rel="stylesheet" href="dist/reveal.css">
+    <link rel="stylesheet" href="dist/theme/black.css" id="theme">
 
-		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
-		</div>
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+    <style>
+        .hljs.custom {
+            font-size: 16px;
+            line-height: 24px;
+        }
 
-		<script src="dist/reveal.js"></script>
-		<script src="plugin/notes/notes.js"></script>
-		<script src="plugin/markdown/markdown.js"></script>
-		<script src="plugin/highlight/highlight.js"></script>
-		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
-			Reveal.initialize({
-				hash: true,
+        .hljs.large.code {
+            font-size: 36px;
+            line-height: 40px;
+        }
 
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
-			});
-		</script>
-	</body>
+
+        .left.small {
+            text-align: left;
+            font-size: 20px;
+        }
+
+        .small-list > li {
+            font-size: 34px;
+        }
+
+        p.medium {
+            font-size: 26px;
+        }
+    </style>
+</head>
+<body>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <h1>Lodash</h1>
+            <h3>for Rolling Scopes School</h3>
+            <p><br> by Siarhei Krauchanka</p>
+            <aside class="notes">
+                Hi everyone! My name is Sergey, and today we'll talk about the Lodash library.
+            </aside>
+        </section>
+        <section>
+            <h2>Plan</h2>
+            <ol>
+                <li class="fragment">What is Lodash?</li>
+                <li class="fragment">Why Lodash?</li>
+                <li class="fragment">Adding Lodash to a project</li>
+                <li class="fragment">Usage examples</li>
+            </ol>
+            <aside class="notes">
+                Here is my presentation plan
+                1. First, we'll find out what Lodash is.
+                2. Then we'll answer the question, why Lodash?
+                3. After that we'll learn about the different ways to add Lodash to your project.
+                4. Finally, we'll look at a few examples of how Lodash can be used.
+            </aside>
+        </section>
+        <section>
+            <h2>What is Lodash?</h2>
+            <p>A modern JavaScript utility library delivering modularity, performance & extras.</p>
+            <ul>
+                <li>Initiall release - April 23, 2012</li>
+                <li>Almost 16 millions weekly npm downloads</li>
+                <li>Almost 80k npm dependents</li>
+                <li>More than 47k stars on GitHub</li>
+                <li>Full build - only 24kB gzipped</li>
+            </ul>
+            <aside class="notes">
+                So, What is Lodash?
+                It is a modern JavaScript utility library delivering modularity, performance & extras.
+                It was initially released in 2012, so it's already 8 years old.
+                As you can see, it has almost 16 million npm downloads weekly and almost 80 thousand npm dependents.
+                It is one of the most commonly used libraries in JS. This means that while you may have never dealt with
+                the Lodash library itself, you are probably using it indirectly all the time.
+                And it has over 47 thousand stars on GitHub, people clearly love it.
+                The full build will only take 24KB of memory.
+                Ok, we found out that Lodash is a mature js library, extremely popular and lightweight.
+            </aside>
+        </section>
+        <section>
+            <h2>Why Lodash?</h2>
+            <p>Lodash makes JavaScript easier by taking the hassle out of working with arrays, numbers, objects,
+                strings.</p>
+            <p>Lodash’s modular methods are great for:</p>
+            <ul class="small-list">
+                <li class="fragment">Iterating arrays, objects, & strings</li>
+                <li class="fragment">Manipulating & testing values</li>
+                <li class="fragment">Creating composite functions</li>
+            </ul>
+            <aside class="notes">
+                So, why Lodash?
+                Well, Lodash makes JavaScript easier by taking the hassle out of working with arrays, numbers, objects,
+                strings. Lodash’s modular methods are great for:
+                Iterating arrays, objects, & strings
+                Manipulating & testing values
+                Creating composite functions
+                So, why don’t we check it out?
+            </aside>
+        </section>
+        <section>
+            <p>Adding Lodash to a project</p>
+            <p class="left small">In a browser:</p>
+            <pre><code class="hljs custom" data-trim>
+								<script src="lodash.js"></script>
+						</code></pre>
+            <p class="left small">Using npm:</p>
+            <pre><code class="hljs custom" data-trim>
+$ npm i -g npm
+$ npm i --save lodash
+						</code></pre>
+            <p class="left small">In Node.js:</p>
+            <pre><code class="hljs custom" data-trim>
+// Load the full build.
+var _ = require('lodash');
+// Load the core build.
+var _ = require('lodash/core');
+// Load the FP build for immutable auto-curried iteratee-first data-last methods.
+var fp = require('lodash/fp');
+// Load method categories.
+var array = require('lodash/array');
+var object = require('lodash/fp/object');
+// Cherry-pick methods for smaller browserify/rollup/webpack bundles.
+var at = require('lodash/at');
+var curryN = require('lodash/fp/curryN');
+					</code></pre>
+            <aside class="notes">
+                First, let's learn about the different ways to add Lodash to your project.
+                You can add it in browser by pasting script tag in your html. You can use link to files on your host.
+                You can install it with npm the way we install everything with npm.
+                And in Node.js, you can add Lodash like this. As you can see, there are a lot of options. You may need
+                the entire library, or, for example, just a module that contains functions for working with arrays, or
+                you may even require only one function you need.
+                By the way, you can also use the cdn link to get a specific module or function, just like with Node.
+            </aside>
+        </section>
+        <section>
+            <h3>Complete <a href="https://lodash.com/docs/4.17.15"> Documentation</a></h3>
+            <p>Array, Collection, Date, Function, Lang, Math, Number, Object, Seq, String, Util, Properties, Methods</p>
+            <p><br> Main function families: <br>
+                is*, stub*, to*, *By, *In, sorted*, <br>
+                *Depth, *Right, *With, *While
+
+            </p>
+            <aside class="notes">
+                Lodash library has really complete Documentation. It’s well-structured and has lots of examples, it’s
+                divided into next sections:
+                Array, Collection, Date, Function, Lang, Math, Number, Object, Seq, String, Util, Properties, Methods.
+                Lodash provides a lot of functions, following are some of them that will help in solving the most
+                common challenges when dealing with javascript objects.
+            </aside>
+        </section>
+        <section>
+            <p>Collection methods</p>
+            <p class="medium">map, reduce, filter, some, every, forEach (aka each), size, ...</p>
+            <p class="left small">_.map</p>
+            <pre><code class="hljs custom" data-trim>
+const data = [
+  { name: 'Patrick',age: '25',},
+  { name: 'John',age: '24',},
+  { name: 'Teresa',age: '26',}
+];
+
+_.map(data, 'name');// [ 'Patrick', 'John', 'Teresa' ]
+						</code></pre>
+            <p class="left small">Works with nested properties as well</p>
+            <pre><code class="hljs custom" data-trim>
+const data = [
+  { name: 'Patrick',age: '25',profile: {experience: 2} },
+  { name: 'John',age: '24',profile: {experience: 2}},
+  { name: 'Teresa',age: '26',profile: {experience: 4} }
+];
+
+_.map(data, 'profile.experience');// [ 2, 2, 4 ]
+						</code></pre>
+            <aside class="notes">
+                Now, let us look at some Collection methods.
+                You may have already noticed, that Lodash duplicates a lot of methods, that most browsers already
+                understand without Lodash, such as forEach, map, filter. In most cases, Lodash equivalents were
+                created earlier, and their current implementations are pretty smart. If Lodash notices, that browser
+                already has some function, it lets browser implementation of this function do the job, otherwise, it
+                uses its own implementation.
+                Function _.map can be used for getting a specific property from an array of objects.
+                Works with nested properties as well
+                Similar useful functions: _.mapValues, _.mapKeys, _.flatMap
+            </aside>
+        </section>
+        <section>
+            <pre><code class="hljs custom" data-trim>
+const users = [
+  { name: 'Patrick', age: '25', profile: { experience: 2 } },
+  { name: 'John', age: '24', profile: { experience: 2 } },
+  { name: 'Teresa', age: '26', profile: { experience: 4 } }
+];
+_.find(users, user => user.name === 'John');
+// { name: 'John', age: '24', profile: { experience: 2 } }
+				</code></pre>
+            <pre><code class="hljs custom" data-trim>
+const users = [
+  { name: 'Patrick', age: '25', profile: { experience: 3 } },
+  { name: 'John', age: '24', profile: { experience: 2 } },
+  { name: 'Teresa', age: '26', profile: { experience: 4 } }
+];
+_.filter(users, user => user.profile.experience > 2);
+// [ { name: 'Patrick', age: '25', profile: { experience: 3 } },
+//   { name: 'Teresa', age: '26', profile: { experience: 4 } } ]
+			</code></pre>
+            <pre><code class="hljs custom" data-trim>
+const users = [
+  { name: 'Patrick', age: '25', profile: { experience: 2 } },
+  { name: 'John', age: '24', profile: { experience: 2 } },
+  { name: 'Teresa', age: '26', profile: { experience: 4 } }
+];
+const usersByName = _.keyBy(users, 'name');
+usersByName['Teresa'];// { name: 'Teresa', age: '26', profile: { experience: 4 } }
+            </code></pre>
+            <aside class="notes">
+                Here are some Collection methods.
+                Function _.find Iterates over elements of collection, returning the first element predicate returns
+                truthy for.
+                Similar useful functions: _.findIndex, _.some
+                Function _.filter Iterates over elements of collection, returning an array of all elements predicate
+                returns
+                truthy for.
+                For example, we want to filter the array of objects based on the profile.experience property.
+                Similar useful functions: _.every
+                Function _.keyBy Creates an object composed of keys generated from the results of running each element
+                of
+                collection through the callback function.
+                We can convert an array of objects into a single object having properties as the unique identifier of
+                each object. This way we can easily access the object based on that unique identifier.
+                Similar useful functions: _.groupBy
+            </aside>
+        </section>
+        <section>
+            <p>Object methods</p>
+            <p class="medium">assign, at, keys, forIn, keys, values, ...</p>
+            <p class="left small">Object manipulation</p>
+            <pre><code class="hljs custom" data-trim>
+								var object = { 'a': [{ 'b': { 'c': 3 } }] };
+
+								_.get(object, 'a[0].b.c');// => 3
+
+								_.set(object, 'a[0].b.c', 4);
+								console.log(object.a[0].b.c);// => 4
+
+								_.has(object, 'a');// => true
+
+				</code></pre>
+            <p class="left small">_.toPairs(object)</p>
+            <pre><code class="hljs custom" data-trim>
+					_.toPairs([{ 'a': 1, 'b': 2 }]);// => [['a', 1], ['b', 2]]
+			</code></pre>
+            <p class="left small">_.fromPairs(pairs)</p>
+            <pre><code class="hljs custom" data-trim>
+						_.fromPairs([['a', 1], ['b', 2]]);// => { 'a': 1, 'b': 2 }
+            </code></pre>
+            <aside class="notes">
+                Here are some Object methods.
+                We can perform object manipulation with get and set functions, which speak for themselves, and we can
+                check if an object has some property with has function.
+                There is also toPairs function, that can turn an object into an array of pairs, and fromPairs function,
+                that turns this array back into object
+                Of course, Lodash deserves more than a 10 minutes talk, but that’s all we have today. I hope I’ve at
+                least inspired you to look through Lodash docs once more.
+            </aside>
+        </section>
+        <section>
+            <h2>thank you!</h2>
+            <footer style='font-size: 28px;'><br><br><br> GitHub <a href="https://github.com/dispet">dispet</a></footer>
+            <aside class="notes">
+                That’s all for today, thank you for your attention!
+            </aside>
+        </section>
+    </div>
+</div>
+
+<script src="dist/reveal.js"></script>
+<script src="plugin/notes/notes.js"></script>
+<script src="plugin/markdown/markdown.js"></script>
+<script src="plugin/highlight/highlight.js"></script>
+<script>
+    // More info about initialization & config:
+    // - https://revealjs.com/initialization/
+    // - https://revealjs.com/config/
+    Reveal.initialize({
+        hash: true,
+
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+    });
+</script>
+</body>
 </html>
